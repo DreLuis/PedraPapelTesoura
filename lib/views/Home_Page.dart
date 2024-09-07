@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen[600],
+        backgroundColor: Colors.teal,
         title: Center(
           child: Text(
             'Pedra Papel Tesoura',
@@ -200,19 +200,98 @@ class _HomePageState extends State<HomePage> {
                 )
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 10),
-               child: Center(
-                child: Text(
-                  "Você: $_userWins - Computador: $_computerWins",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(0, 4),
+                          blurRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Jogador",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins",
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "$_userWins",
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins",
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
-               ),
-            ),
+                ),
+                SizedBox(width: 10), 
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(20), 
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(0, 4),
+                          blurRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Computador",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins",
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "$_computerWins",
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins",
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
           ]
         )
       )
