@@ -1,6 +1,6 @@
 # Jogo de Pedra, Papel e Tesoura
 
-Este projeto foi desenvolvido como parte de uma avaliação na disciplina Desenvolvimento de Sistemas para Dispositivos Mobile, com o objetivo de implementar o jogo clássico de Pedra, Papel e Tesoura utilizando Flutter e Dart.
+Este projeto foi desenvolvido como parte de uma avaliação na disciplina Desenvolvimento de Sistemas para Dispositivos Móveis, com o objetivo de implementar o jogo clássico de Pedra, Papel e Tesoura utilizando Flutter e Dart.
 
 ## Descrição
 O jogo de Pedra, Papel e Tesoura é uma implementação simples onde o usuário pode escolher entre três opções (pedra, papel ou tesoura) e competir contra o computador, que seleciona uma jogada aleatória. O placar de vitórias e derrotas é atualizado em tempo real.
