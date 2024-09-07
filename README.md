@@ -1,16 +1,17 @@
-# flutter_application_2
+# Jogo de Pedra, Papel e Tesoura
 
-A new Flutter project.
+Este projeto foi desenvolvido como parte de uma avaliação na disciplina Desenvolvimento de Sistemas para Dispositivos Mobile, com o objetivo de implementar o jogo clássico de Pedra, Papel e Tesoura utilizando Flutter e Dart.
 
-## Getting Started
+## Descrição
+O jogo de Pedra, Papel e Tesoura é uma implementação simples onde o usuário pode escolher entre três opções (pedra, papel ou tesoura) e competir contra o computador, que seleciona uma jogada aleatória. O placar de vitórias e derrotas é atualizado em tempo real.
 
-This project is a starting point for a Flutter application.
+## Funcionalidades
+- Escolha entre as opções de Pedra, Papel e Tesoura.
+- O computador escolhe aleatoriamente uma jogada.
+- Exibição do resultado da partida.
+- Placar atualizado em tempo real para o jogador e o computador.
+- Interface interativa e responsiva.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tecnologias Utilizadas
+- Flutter: Para construção da interface do usuário.
+- Dart: Para a lógica de programação do jogo.
