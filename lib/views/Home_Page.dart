@@ -1,5 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import '../components/AppBar.dart'; 
+import '../components/CircleImage.dart';
+import '../components/ScoreBoard.dart';
+import '../components/ResultText.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,10 +20,10 @@ class _HomePageState extends State<HomePage> {
     'images/papel.png',
   ];
 
-  int _selectedIndex = -1; 
+  int _selectedIndex = -1;
   int _computerIndex = -1;
-  String _randomImage = ''; 
-  String _resultMessage = ''; 
+  String _randomImage = '';
+  String _resultMessage = '';
 
   int _userWins = 0;
   int _computerWins = 0;
@@ -52,19 +56,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Center(
-          child: Text(
-            'Pedra Papel Tesoura',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Open Sans",
-            ),
-          ),
-        )
-      ),
+      appBar: CustomAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Column(
@@ -85,64 +77,10 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  GestureDetector(
-                    onTap: () => _onCircleTap(0),
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:Colors.grey[300],
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 2,
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(_images[0]),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _onCircleTap(1),
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:Colors.grey[300],
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 2,
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(_images[1]),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _onCircleTap(2),
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:Colors.grey[300],
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 2,
-                        ),
-                        image: DecorationImage(
-                          image: AssetImage(_images[2]),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  )
-                ],  
+                  CircleImage(imagePath: _images[0], onTap: () => _onCircleTap(0)),
+                  CircleImage(imagePath: _images[1], onTap: () => _onCircleTap(1)),
+                  CircleImage(imagePath: _images[2], onTap: () => _onCircleTap(2)),
+                ],
               ),
             ),
             Center(
@@ -167,134 +105,33 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.black,
                     width: 2,
                   ),
-                  image: _randomImage.isNotEmpty ? DecorationImage(
-                    image: AssetImage(_randomImage),
-                    fit: BoxFit.cover,
-                  ): null,
+                  image: _randomImage.isNotEmpty
+                      ? DecorationImage(
+                          image: AssetImage(_randomImage),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
                 ),
-              )
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 40),
-              child: Center(
-                child: Text(
-                  "Resultado",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
-                  ),
-                )
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-              child: Center(
-                child: Text(
-                  _resultMessage,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "OpenSans",
-                  ),
-                )
-              ),
-            ),
+            SizedBox(height: 30),
+            ResultText(result: _resultMessage),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(0, 4),
-                          blurRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Jogador",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins",
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "$_userWins",
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins",
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: ScoreBoard(title: "Jogador", score: _userWins),
                 ),
-                SizedBox(width: 10), 
+                SizedBox(width: 10),
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(20), 
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(0, 4),
-                          blurRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Computador",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins",
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "$_computerWins",
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins",
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: ScoreBoard(title: "Computador", score: _computerWins),
                 ),
               ],
-            )
-          ]
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
